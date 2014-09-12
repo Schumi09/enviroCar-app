@@ -64,9 +64,8 @@ public class WPSClient {
 				try {
 
 					URL url = new URL(
-							"http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService?Service=WPS&Request=Execute&Version=1.0.0&Identifier=org.n52.wps.extension.GetFuelPriceProcess&DataInputs=fuelType="
-									+ track.getCar().getFuelType()
-									+ "&RawDataOutput=fuelPrice");
+							"http://processing.envirocar.org:8080/wps/WebProcessingService?Service=WPS&Request=Execute&Version=1.0.0&Identifier=org.envirocar.wps.GetFuelPriceProcess&RawDataOutput=fuelPrice&DataInputs=fuelType="
+									+ track.getCar().getFuelType());
 
 					BufferedReader reader = new BufferedReader(
 							new InputStreamReader(url.openStream()));
