@@ -54,6 +54,10 @@ import org.envirocar.app.json.TrackWithoutMeasurementsException;
 import org.envirocar.app.logging.Logger;
 import org.envirocar.app.storage.Measurement;
 import org.envirocar.app.storage.Track;
+import org.gavaghan.geodesy.Ellipsoid;
+import org.gavaghan.geodesy.GeodeticCalculator;
+import org.gavaghan.geodesy.GeodeticMeasurement;
+import org.gavaghan.geodesy.GlobalPosition;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -72,6 +76,7 @@ public class Util {
 			.getProperty("line.separator");
 	public static final String EXTERNAL_SUB_FOLDER = "enviroCar";
 	private static ISO8601DateFormat jacksonFormat = new ISO8601DateFormat();
+	private static GeodeticCalculator geoCalc = new GeodeticCalculator();
 
 	/**
 	 * Create a file in the .enviroCar folder of the external storage.
@@ -306,7 +311,7 @@ public class Util {
 	}
 	
 	/**
-	 * Returns the distance of two points in kilometers.
+	 * Returns the geodetic distance of two points in kilometers.
 	 * 
 	 * @param lat1
 	 * @param lng1
@@ -315,15 +320,19 @@ public class Util {
 	 * @return distance in km
 	 */
 	public static double getDistance(double lat1, double lng1, double lat2, double lng2) {
+		// set position 1
+		GlobalPosition position1 = new GlobalPosition(lat1, lng1, 0.0);
 
-		double earthRadius = 6369;
-		double dLat = Math.toRadians(lat2 - lat1);
-		double dLng = Math.toRadians(lng2 - lng1);
-		double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
-		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-		double dist = earthRadius * c;
-
-		return dist;
+		// set position 2
+		GlobalPosition position2 = new GlobalPosition(lat2, lng2, 0.0);
+		
+		// calculate the geodetic measurement
+		double p2pKilometers;
+		
+		GeodeticMeasurement geoMeasurement = geoCalc.calculateGeodeticMeasurement(Ellipsoid.WGS84, position1, position2);
+		p2pKilometers = geoMeasurement.getPointToPointDistance() / 1000.0;
+		
+		return p2pKilometers;
 
 	}
 	
