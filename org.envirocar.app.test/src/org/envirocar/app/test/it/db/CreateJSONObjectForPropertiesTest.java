@@ -22,7 +22,7 @@ package org.envirocar.app.test.it.db;
 
 import org.envirocar.app.storage.DbAdapterImpl;
 import org.envirocar.app.storage.Measurement;
-import org.envirocar.app.storage.Measurement.PropertyKey;
+import org.envirocar.obdig.storage.Measurement.PropertyKey;
 import org.json.JSONException;
 import org.json.JSONObject;
 

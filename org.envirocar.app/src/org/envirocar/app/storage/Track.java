@@ -21,21 +21,21 @@
 
 package org.envirocar.app.storage;
 
-import static org.envirocar.app.storage.Measurement.PropertyKey.CONSUMPTION;
+import static org.envirocar.obdig.storage.Measurement.PropertyKey.CONSUMPTION;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.envirocar.app.exception.FuelConsumptionException;
-import org.envirocar.app.exception.MeasurementsException;
+import org.envirocar.obdig.exception.FuelConsumptionException;
+import org.envirocar.obdig.exception.MeasurementsException;
 import org.envirocar.app.logging.Logger;
 import org.envirocar.app.model.Car;
-import org.envirocar.app.model.Car.FuelType;
+import org.envirocar.obdig.model.Car.FuelType;
 import org.envirocar.app.model.TrackId;
-import org.envirocar.app.protocol.algorithm.AbstractConsumptionAlgorithm;
-import org.envirocar.app.protocol.algorithm.BasicConsumptionAlgorithm;
-import org.envirocar.app.protocol.algorithm.UnsupportedFuelTypeException;
+import org.envirocar.obdig.protocol.algorithm.AbstractConsumptionAlgorithm;
+import org.envirocar.obdig.protocol.algorithm.BasicConsumptionAlgorithm;
+import org.envirocar.obdig.protocol.algorithm.UnsupportedFuelTypeException;
 import org.envirocar.app.util.Util;
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -41,7 +41,7 @@ import org.envirocar.app.dao.exception.SensorRetrievalException;
 import org.envirocar.app.dao.exception.UnauthorizedException;
 import org.envirocar.app.logging.Logger;
 import org.envirocar.app.model.Car;
-import org.envirocar.app.model.Car.FuelType;
+import org.envirocar.obdig.model.Car.FuelType;
 
 import android.app.Activity;
 import android.app.Dialog;

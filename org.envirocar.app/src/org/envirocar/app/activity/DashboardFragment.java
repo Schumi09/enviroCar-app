@@ -41,7 +41,7 @@ import org.envirocar.app.event.SpeedEvent;
 import org.envirocar.app.event.SpeedEventListener;
 import org.envirocar.app.logging.Logger;
 import org.envirocar.app.model.Car;
-import org.envirocar.app.model.Car.FuelType;
+import org.envirocar.obdig.model.Car.FuelType;
 import org.envirocar.app.views.LayeredImageRotateView;
 import org.envirocar.app.views.TypefaceEC;
 

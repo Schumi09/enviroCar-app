@@ -36,117 +36,23 @@ import org.json.JSONObject;
  * @author matthes rieke
  *
  */
-public class Car implements Serializable {
+public class Car extends org.envirocar.obdig.model.Car implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6321429785990500936L;
+	private static final long serialVersionUID = -1158542873383742748L;
 	private static final Logger logger = Logger.getLogger(Car.class);
-	private static final String GASOLINE_STRING = "gasoline";
-	private static final String DIESEL_STRING = "diesel";
 
 	public static final String TEMPORARY_SENSOR_ID = "%TMP_ID%";
 	
-	public enum FuelType {
-		GASOLINE {
-		    public String toString() {
-		        return GASOLINE_STRING;
-		    }
-		    
-		},
-		DIESEL {
-			public String toString() {
-		        return DIESEL_STRING;
-		    }
-		}
-		
-	}
-	
-	private FuelType fuelType;
-	private String manufacturer;
-	private String model;
-	private String id;
-	private int constructionYear;
-	private int engineDisplacement;
-	
-	public Car(FuelType fuelType, String manufacturer, String model, String id, int year, int engineDisplacement) {
-		this.fuelType = fuelType;
-		this.manufacturer = manufacturer;
-		this.model = model;
-		this.id = id;
-		this.constructionYear = year;
-		this.engineDisplacement = engineDisplacement;
-	}
-	
 	private Car(String fuelType, String manufacturer, String model, String id, int year, int engineDisplacement) {
-		this(resolveFuelType(fuelType), manufacturer, model, id, year, engineDisplacement);
+		super(resolveFuelType(fuelType), manufacturer, model, id, year, engineDisplacement);
 	}
 
-	public FuelType getFuelType() {
-		return fuelType;
-	}
-
-	public String getManufacturer() {
-		return manufacturer;
-	}
-
-	public String getModel() {
-		return model;
-	}
-
-	public String getId() {
-		return id;
-	}
-	
-	public void setId(String newID){
-		this.id = newID;
-	}
-
-	public int getConstructionYear() {
-		return constructionYear;
-	}
-
-	public void setConstructionYear(int year) {
-		this.constructionYear = year;
-	}
-
-	/**
-	 * @return the engine displacement in cubic centimeters
-	 */
-	public int getEngineDisplacement() {
-		return engineDisplacement;
-	}
-	
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append(manufacturer);
-		sb.append(" ");
-		sb.append(model);
-		sb.append(" ");
-		sb.append(constructionYear);
-		sb.append(" (");
-		sb.append(fuelType);
-		sb.append(" / ");
-		sb.append(engineDisplacement);
-		sb.append("cc)");
-		return sb.toString();
-	}
-	
-	@Override
-	public boolean equals(Object o) {
-		boolean result = false;
-		if (o instanceof Car) {
-			Car c = (Car) o;
-			result = this.fuelType == c.fuelType 
-					&& this.manufacturer.equals(c.manufacturer)
-					&& this.model.equals(c.model)
-					&& this.id.equals(c.id)
-					&& this.constructionYear == c.constructionYear
-					&& this.engineDisplacement == c.engineDisplacement;
-		}
-		return result;
+	public Car(FuelType fuelType, String manufacturer, String model,
+			String carId, int year, int engineDisplacement) {
+		super(fuelType, manufacturer, model, carId, year, engineDisplacement);
 	}
 
 	public static Car fromJsonWithStrictEngineDisplacement(JSONObject jsonObject) throws JSONException {
@@ -207,15 +113,6 @@ public class Car implements Serializable {
 		return sensors;
 	}
 
-
-	public static FuelType resolveFuelType(String foolType) {
-		if (foolType.equals(GASOLINE_STRING)) {
-			return FuelType.GASOLINE;
-		} else if (foolType.equals(DIESEL_STRING)) {
-			return FuelType.DIESEL;
-		}
-		return FuelType.GASOLINE;
-	}
 
 	public static double ccmToLiter(int ccm) {
 		float result = ccm / 1000.0f;

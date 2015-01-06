@@ -24,7 +24,7 @@ package org.envirocar.app.storage;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.envirocar.app.exception.MeasurementsException;
+import org.envirocar.obdig.exception.MeasurementsException;
 import org.envirocar.app.model.Position;
 import org.envirocar.app.model.TrackId;
 import org.envirocar.app.storage.Track.TrackStatus;

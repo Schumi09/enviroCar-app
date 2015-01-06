@@ -29,7 +29,7 @@ import junit.framework.Assert;
 import org.envirocar.app.exception.InvalidObjectStateException;
 import org.envirocar.app.json.FuelingEncoder;
 import org.envirocar.app.model.Car;
-import org.envirocar.app.model.Car.FuelType;
+import org.envirocar.obdig.model.Car.FuelType;
 import org.envirocar.app.model.Fueling;
 import org.envirocar.app.model.NumberWithUOM;
 import org.json.JSONException;

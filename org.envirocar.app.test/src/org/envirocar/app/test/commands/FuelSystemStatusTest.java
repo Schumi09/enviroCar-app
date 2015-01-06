@@ -22,9 +22,9 @@ package org.envirocar.app.test.commands;
 
 import junit.framework.Assert;
 
-import org.envirocar.app.commands.FuelSystemStatus;
-import org.envirocar.app.commands.PIDUtil;
-import org.envirocar.app.commands.PIDUtil.PID;
+import org.envirocar.obdig.commands.FuelSystemStatus;
+import org.envirocar.obdig.commands.PIDUtil;
+import org.envirocar.obdig.commands.PIDUtil.PID;
 
 import android.test.AndroidTestCase;
 

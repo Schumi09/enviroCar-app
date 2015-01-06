@@ -22,8 +22,8 @@ package org.envirocar.app.test.commands;
 
 import junit.framework.Assert;
 
-import org.envirocar.app.commands.CommonCommand.CommonCommandState;
-import org.envirocar.app.commands.IntakeTemperature;
+import org.envirocar.obdig.commands.CommonCommand.CommonCommandState;
+import org.envirocar.obdig.commands.IntakeTemperature;
 
 import android.test.AndroidTestCase;
 

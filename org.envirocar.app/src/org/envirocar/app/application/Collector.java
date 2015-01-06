@@ -20,26 +20,26 @@
  */
 package org.envirocar.app.application;
 
-import org.envirocar.app.commands.O2LambdaProbe;
-import org.envirocar.app.commands.O2LambdaProbeCurrent;
-import org.envirocar.app.commands.O2LambdaProbeVoltage;
+import org.envirocar.obdig.commands.O2LambdaProbe;
+import org.envirocar.obdig.commands.O2LambdaProbeCurrent;
+import org.envirocar.obdig.commands.O2LambdaProbeVoltage;
+import org.envirocar.obdig.exception.MeasurementsException;
 import org.envirocar.app.event.CO2Event;
 import org.envirocar.app.event.ConsumptionEvent;
 import org.envirocar.app.event.EventBus;
 import org.envirocar.app.event.GpsDOP;
 import org.envirocar.app.event.LocationEvent;
 import org.envirocar.app.event.LocationEventListener;
-import org.envirocar.app.exception.FuelConsumptionException;
-import org.envirocar.app.exception.MeasurementsException;
+import org.envirocar.obdig.exception.FuelConsumptionException;
 import org.envirocar.app.logging.Logger;
 import org.envirocar.app.model.Car;
-import org.envirocar.app.protocol.algorithm.AbstractCalculatedMAFAlgorithm;
-import org.envirocar.app.protocol.algorithm.AbstractConsumptionAlgorithm;
-import org.envirocar.app.protocol.algorithm.BasicConsumptionAlgorithm;
-import org.envirocar.app.protocol.algorithm.CalculatedMAFWithStaticVolumetricEfficiency;
-import org.envirocar.app.protocol.algorithm.UnsupportedFuelTypeException;
+import org.envirocar.obdig.protocol.algorithm.AbstractCalculatedMAFAlgorithm;
+import org.envirocar.obdig.protocol.algorithm.AbstractConsumptionAlgorithm;
+import org.envirocar.obdig.protocol.algorithm.BasicConsumptionAlgorithm;
+import org.envirocar.obdig.protocol.algorithm.CalculatedMAFWithStaticVolumetricEfficiency;
+import org.envirocar.obdig.protocol.algorithm.UnsupportedFuelTypeException;
+import org.envirocar.obdig.storage.Measurement.PropertyKey;
 import org.envirocar.app.storage.Measurement;
-import org.envirocar.app.storage.Measurement.PropertyKey;
 
 import android.location.Location;
 

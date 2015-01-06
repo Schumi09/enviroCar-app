@@ -27,7 +27,7 @@ import java.util.UUID;
 
 import junit.framework.Assert;
 
-import org.envirocar.app.exception.MeasurementsException;
+import org.envirocar.obdig.exception.MeasurementsException;
 import org.envirocar.app.storage.DbAdapterImpl;
 import org.envirocar.app.storage.Measurement;
 import org.envirocar.app.storage.Track;

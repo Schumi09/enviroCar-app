@@ -27,7 +27,7 @@ import junit.framework.Assert;
 
 import org.envirocar.app.json.TrackEncoder;
 import org.envirocar.app.model.Car;
-import org.envirocar.app.model.Car.FuelType;
+import org.envirocar.obdig.model.Car.FuelType;
 import org.envirocar.app.storage.Measurement;
 import org.envirocar.app.storage.Track;
 import org.envirocar.app.storage.TrackAlreadyFinishedException;

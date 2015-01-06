@@ -21,26 +21,26 @@
 package org.envirocar.app.application;
 
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import org.envirocar.app.activity.SettingsActivity;
-import org.envirocar.app.commands.CommonCommand;
-import org.envirocar.app.commands.EngineLoad;
-import org.envirocar.app.commands.FuelSystemStatus;
-import org.envirocar.app.commands.IntakePressure;
-import org.envirocar.app.commands.IntakeTemperature;
-import org.envirocar.app.commands.LongTermTrimBank1;
-import org.envirocar.app.commands.MAF;
-import org.envirocar.app.commands.NumberResultCommand;
-import org.envirocar.app.commands.O2LambdaProbe;
-import org.envirocar.app.commands.RPM;
-import org.envirocar.app.commands.ShortTermTrimBank1;
-import org.envirocar.app.commands.Speed;
-import org.envirocar.app.commands.TPS;
+import org.envirocar.obdig.commands.CommonCommand;
+import org.envirocar.obdig.commands.EngineLoad;
+import org.envirocar.obdig.commands.FuelSystemStatus;
+import org.envirocar.obdig.commands.IntakePressure;
+import org.envirocar.obdig.commands.IntakeTemperature;
+import org.envirocar.obdig.commands.LongTermTrimBank1;
+import org.envirocar.obdig.commands.MAF;
+import org.envirocar.obdig.commands.NumberResultCommand;
+import org.envirocar.obdig.commands.O2LambdaProbe;
+import org.envirocar.obdig.commands.RPM;
+import org.envirocar.obdig.commands.ShortTermTrimBank1;
+import org.envirocar.obdig.commands.Speed;
+import org.envirocar.obdig.commands.TPS;
+import org.envirocar.obdig.protocol.Listener;
 import org.envirocar.app.event.EventBus;
 import org.envirocar.app.event.GpsDOP;
 import org.envirocar.app.event.GpsDOPEvent;
@@ -57,6 +57,7 @@ import org.envirocar.app.storage.Measurement;
 import org.envirocar.app.storage.MeasurementSerializationException;
 import org.envirocar.app.storage.TrackAlreadyFinishedException;
 import org.envirocar.app.storage.TrackMetadata;
+import org.envirocar.app.util.NamedThreadFactory;
 
 import android.content.SharedPreferences;
 
@@ -81,7 +82,7 @@ public class CommandListener implements Listener, MeasurementListener {
 
 	private static int instanceCount;
 	private ExecutorService inserter = new ThreadPoolExecutor(1, 1, 0L, 
-			TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>(), Executors.defaultThreadFactory(),
+			TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>(), new NamedThreadFactory("LaxRejectingThreadPool"),
 			new RejectedExecutionHandler() {
 				@Override
 				public void rejectedExecution(Runnable r,

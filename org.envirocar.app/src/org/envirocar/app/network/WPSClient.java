@@ -24,7 +24,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-import org.envirocar.app.exception.MeasurementsException;
+import org.envirocar.obdig.exception.MeasurementsException;
 import org.envirocar.app.logging.Logger;
 import org.envirocar.app.storage.Track;
 import org.envirocar.app.util.Util;

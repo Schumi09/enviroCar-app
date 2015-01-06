@@ -26,12 +26,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.envirocar.app.exception.MeasurementsException;
+import org.envirocar.obdig.exception.MeasurementsException;
 import org.envirocar.app.logging.Logger;
 import org.envirocar.app.storage.Measurement;
 import org.envirocar.app.storage.Track;
-import org.envirocar.app.storage.Measurement.PropertyKey;
-import static org.envirocar.app.storage.Measurement.PropertyKey.*;
+import org.envirocar.obdig.storage.Measurement.PropertyKey;
+import static org.envirocar.obdig.storage.Measurement.PropertyKey.*;
 import org.envirocar.app.util.Util;
 import org.json.JSONArray;
 import org.json.JSONException;

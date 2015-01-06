@@ -37,7 +37,7 @@ import org.envirocar.app.exception.InvalidObjectStateException;
 import org.envirocar.app.logging.Logger;
 import org.envirocar.app.storage.Measurement;
 import org.envirocar.app.storage.Track;
-import org.envirocar.app.storage.Measurement.PropertyKey;
+import org.envirocar.obdig.storage.Measurement.PropertyKey;
 import org.envirocar.app.util.FileWithMetadata;
 import org.envirocar.app.util.InputStreamWithLength;
 import org.envirocar.app.util.Util;

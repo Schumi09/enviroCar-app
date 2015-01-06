@@ -32,7 +32,6 @@ import org.envirocar.app.activity.SettingsActivity;
 import org.envirocar.app.activity.TroubleshootingFragment;
 import org.envirocar.app.application.CarManager;
 import org.envirocar.app.application.CommandListener;
-import org.envirocar.app.application.Listener;
 import org.envirocar.app.application.LocationUpdateListener;
 import org.envirocar.app.application.service.AbstractBackgroundServiceStateReceiver.ServiceState;
 import org.envirocar.app.bluetooth.BluetoothConnection;
@@ -42,8 +41,9 @@ import org.envirocar.app.event.GpsSatelliteFix;
 import org.envirocar.app.event.GpsSatelliteFixEvent;
 import org.envirocar.app.event.GpsSatelliteFixEventListener;
 import org.envirocar.app.logging.Logger;
-import org.envirocar.app.protocol.ConnectionListener;
-import org.envirocar.app.protocol.OBDCommandLooper;
+import org.envirocar.obdig.protocol.ConnectionListener;
+import org.envirocar.obdig.protocol.Listener;
+import org.envirocar.obdig.protocol.OBDCommandLooper;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -376,7 +376,8 @@ public class BackgroundServiceImpl extends Service implements BackgroundService 
 						}
 					}
 				});
-		this.commandLooper.start();
+		AndroidCommandExecutor exec = new AndroidCommandExecutor(this.commandLooper);
+		exec.start();
 	}
 
 	protected void setState(ServiceState serviceStarted) {

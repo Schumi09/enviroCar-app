@@ -22,9 +22,9 @@ package org.envirocar.app.test.commands.drivedeck;
 
 import junit.framework.Assert;
 
-import org.envirocar.app.commands.CommonCommand;
-import org.envirocar.app.commands.IntakeTemperature;
-import org.envirocar.app.protocol.ResponseParser;
+import org.envirocar.obdig.commands.CommonCommand;
+import org.envirocar.obdig.commands.IntakeTemperature;
+import org.envirocar.obdig.protocol.ResponseParser;
 
 public class IntakeTemperatureTest extends CommandTest {
 	

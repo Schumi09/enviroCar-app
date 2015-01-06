@@ -20,8 +20,8 @@
  */
 package org.envirocar.app.test.commands.drivedeck;
 
-import org.envirocar.app.protocol.ResponseParser;
-import org.envirocar.app.protocol.drivedeck.DriveDeckSportConnector;
+import org.envirocar.obdig.protocol.ResponseParser;
+import org.envirocar.obdig.protocol.drivedeck.DriveDeckSportConnector;
 
 import android.test.AndroidTestCase;
 

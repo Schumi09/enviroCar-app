@@ -27,9 +27,9 @@ import java.util.Set;
 
 import junit.framework.Assert;
 
-import org.envirocar.app.commands.PIDSupported;
-import org.envirocar.app.commands.CommonCommand.CommonCommandState;
-import org.envirocar.app.commands.PIDUtil.PID;
+import org.envirocar.obdig.commands.PIDSupported;
+import org.envirocar.obdig.commands.CommonCommand.CommonCommandState;
+import org.envirocar.obdig.commands.PIDUtil.PID;
 
 import android.test.AndroidTestCase;
 
