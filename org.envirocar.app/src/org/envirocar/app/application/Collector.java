@@ -20,9 +20,9 @@
  */
 package org.envirocar.app.application;
 
-import org.envirocar.obdig.commands.O2LambdaProbe;
-import org.envirocar.obdig.commands.O2LambdaProbeCurrent;
-import org.envirocar.obdig.commands.O2LambdaProbeVoltage;
+import org.envirocar.obdig.commands.numeric.O2LambdaProbe;
+import org.envirocar.obdig.commands.numeric.O2LambdaProbeCurrent;
+import org.envirocar.obdig.commands.numeric.O2LambdaProbeVoltage;
 import org.envirocar.obdig.exception.MeasurementsException;
 import org.envirocar.app.event.CO2Event;
 import org.envirocar.app.event.ConsumptionEvent;
