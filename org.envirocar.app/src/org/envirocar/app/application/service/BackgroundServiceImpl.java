@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Locale;
+import java.util.Properties;
 
 import org.envirocar.app.R;
 import org.envirocar.app.activity.MainActivity;
@@ -41,6 +42,7 @@ import org.envirocar.app.event.GpsSatelliteFix;
 import org.envirocar.app.event.GpsSatelliteFixEvent;
 import org.envirocar.app.event.GpsSatelliteFixEventListener;
 import org.envirocar.app.logging.Logger;
+import org.envirocar.obdig.FeatureFlags;
 import org.envirocar.obdig.protocol.ConnectionListener;
 import org.envirocar.obdig.protocol.Listener;
 import org.envirocar.obdig.protocol.OBDCommandLooper;
@@ -376,8 +378,16 @@ public class BackgroundServiceImpl extends Service implements BackgroundService 
 						}
 					}
 				});
+		
+		FeatureFlags.init(prepareProperties());
 		AndroidCommandExecutor exec = new AndroidCommandExecutor(this.commandLooper);
 		exec.start();
+	}
+
+	private Properties prepareProperties() {
+		Properties result = new Properties();
+		result.put(FeatureFlags.PID_SUPPORTED_KEY, org.envirocar.app.FeatureFlags.usePIDSupported());
+		return result;
 	}
 
 	protected void setState(ServiceState serviceStarted) {
