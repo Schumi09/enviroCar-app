@@ -27,7 +27,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import org.envirocar.app.activity.SettingsActivity;
-import org.envirocar.obdig.commands.CommonCommand;
+import org.envirocar.obdig.commands.AbstractCommand;
 import org.envirocar.obdig.commands.numeric.EngineLoad;
 import org.envirocar.obdig.commands.raw.FuelSystemStatus;
 import org.envirocar.obdig.commands.numeric.IntakePressure;
@@ -128,7 +128,7 @@ public class CommandListener implements DataListener, MeasurementListener {
 		
 	}
 
-	public void receiveUpdate(CommonCommand command) {
+	public void receiveUpdate(AbstractCommand command) {
 		// Get the name and the result of the Command
 		
 		if (!(command instanceof NumberResultCommand)) return;
@@ -251,7 +251,7 @@ public class CommandListener implements DataListener, MeasurementListener {
 	}
 	
 
-	private boolean isNoDataCommand(CommonCommand command) {
+	private boolean isNoDataCommand(AbstractCommand command) {
 		if (command.getRawData() != null && (command.getRawData().equals("NODATA") ||
 				command.getRawData().equals(""))) return true;
 		
