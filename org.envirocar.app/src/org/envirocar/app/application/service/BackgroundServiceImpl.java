@@ -44,7 +44,7 @@ import org.envirocar.app.event.GpsSatelliteFixEventListener;
 import org.envirocar.app.logging.Logger;
 import org.envirocar.obdig.FeatureFlags;
 import org.envirocar.obdig.protocol.ConnectionListener;
-import org.envirocar.obdig.protocol.Listener;
+import org.envirocar.obdig.protocol.DataListener;
 import org.envirocar.obdig.protocol.OBDCommandLooper;
 
 import android.app.Notification;
@@ -88,7 +88,7 @@ public class BackgroundServiceImpl extends Service implements BackgroundService 
 
 	public static final int BG_NOTIFICATION_ID = 42;
 
-	private Listener commandListener;
+	private DataListener commandListener;
 	private final Binder binder = new LocalBinder();
 
 	private OBDCommandLooper commandLooper;

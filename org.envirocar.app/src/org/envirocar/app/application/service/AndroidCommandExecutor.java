@@ -4,9 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.envirocar.app.logging.Logger;
+import org.envirocar.obdig.protocol.CommandExecutor;
 import org.envirocar.obdig.protocol.OBDCommandLooper;
 import org.envirocar.obdig.protocol.exception.LooperStoppedException;
-import org.envirocar.obdig.protocol.executor.CommandExecutor;
 
 import android.os.Handler;
 import android.os.HandlerThread;

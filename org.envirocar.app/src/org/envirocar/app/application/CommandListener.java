@@ -40,7 +40,7 @@ import org.envirocar.obdig.commands.numeric.RPM;
 import org.envirocar.obdig.commands.numeric.ShortTermTrimBank1;
 import org.envirocar.obdig.commands.numeric.Speed;
 import org.envirocar.obdig.commands.numeric.TPS;
-import org.envirocar.obdig.protocol.Listener;
+import org.envirocar.obdig.protocol.DataListener;
 import org.envirocar.app.event.EventBus;
 import org.envirocar.app.event.GpsDOP;
 import org.envirocar.app.event.GpsDOPEvent;
@@ -68,7 +68,7 @@ import android.content.SharedPreferences;
  * @author matthes rieke
  *
  */
-public class CommandListener implements Listener, MeasurementListener {
+public class CommandListener implements DataListener, MeasurementListener {
 	
 	private static final Logger logger = Logger.getLogger(CommandListener.class);
 
