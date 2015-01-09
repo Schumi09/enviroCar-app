@@ -27,7 +27,8 @@ import java.util.Collections;
 import java.util.List;
 
 import org.envirocar.app.R;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.mapsforge.android.maps.MapActivity;
 import org.mapsforge.android.maps.MapView;
 import org.mapsforge.android.maps.Projection;
@@ -52,7 +53,7 @@ import android.view.Display;
  */
 public class Map extends MapActivity {
 
-	private static final Logger logger = Logger.getLogger(Map.class);
+	private static final Logger logger = LoggerFactory.getLogger(Map.class);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

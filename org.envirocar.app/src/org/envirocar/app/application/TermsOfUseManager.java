@@ -30,7 +30,8 @@ import org.envirocar.app.dao.DAOProvider.AsyncExecutionWithCallback;
 import org.envirocar.app.dao.exception.DAOException;
 import org.envirocar.app.dao.exception.TermsOfUseRetrievalException;
 import org.envirocar.app.exception.ServerException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.model.TermsOfUse;
 import org.envirocar.app.model.TermsOfUseInstance;
 import org.envirocar.app.model.User;
@@ -42,7 +43,7 @@ import de.keyboardsurfer.android.widget.crouton.Style;
 
 public class TermsOfUseManager {
 
-	private static final Logger logger = Logger.getLogger(TermsOfUseManager.class);
+	private static final Logger logger = LoggerFactory.getLogger(TermsOfUseManager.class);
 	private static TermsOfUseManager instance;
 	private TermsOfUseInstance current;
 	protected TermsOfUse list;

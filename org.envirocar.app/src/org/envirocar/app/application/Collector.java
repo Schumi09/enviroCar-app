@@ -31,7 +31,8 @@ import org.envirocar.app.event.GpsDOP;
 import org.envirocar.app.event.LocationEvent;
 import org.envirocar.app.event.LocationEventListener;
 import org.envirocar.obdig.exception.FuelConsumptionException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.model.Car;
 import org.envirocar.obdig.protocol.algorithm.AbstractCalculatedMAFAlgorithm;
 import org.envirocar.obdig.protocol.algorithm.AbstractConsumptionAlgorithm;
@@ -45,7 +46,7 @@ import android.location.Location;
 
 public class Collector implements LocationEventListener{
 
-	private static final Logger logger = Logger.getLogger(Collector.class);
+	private static final Logger logger = LoggerFactory.getLogger(Collector.class);
 	static final int DEFAULT_SAMPLING_RATE_DELTA = 5000;
 	private Measurement measurement = new Measurement(0, 0);
 	private MeasurementListener callback;

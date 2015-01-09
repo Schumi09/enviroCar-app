@@ -21,7 +21,8 @@
 
 package org.envirocar.app.activity;
 
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.mapsforge.android.maps.MapActivity;
 import org.mapsforge.android.maps.MapView;
 import org.mapsforge.android.maps.Projection;
@@ -50,7 +51,7 @@ import android.view.View.OnTouchListener;
 
 public class HeatMap extends MapActivity {
 	
-	private static final Logger logger = Logger.getLogger(HeatMap.class);
+	private static final Logger logger = LoggerFactory.getLogger(HeatMap.class);
 
 	private HeatMapOverlay heatMapOverlay;
 

@@ -28,7 +28,8 @@ import org.envirocar.app.application.UserManager;
 import org.envirocar.app.dao.DAOProvider;
 import org.envirocar.app.dao.exception.UnauthorizedException;
 import org.envirocar.app.dao.exception.UserRetrievalException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.model.User;
 import org.envirocar.app.views.TypefaceEC;
 
@@ -62,7 +63,7 @@ import de.keyboardsurfer.android.widget.crouton.Style;
  */
 public class LoginFragment extends SherlockFragment {
 
-	private static final Logger logger = Logger.getLogger(LoginFragment.class);
+	private static final Logger logger = LoggerFactory.getLogger(LoginFragment.class);
 	/**
 	 * Keep track of the login task to ensure we can cancel it if requested.
 	 */

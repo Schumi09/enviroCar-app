@@ -41,7 +41,8 @@ import org.envirocar.app.application.service.DeviceInRangeServiceInteractor;
 import org.envirocar.app.dao.DAOProvider;
 import org.envirocar.app.dao.exception.AnnouncementsRetrievalException;
 import org.envirocar.app.exception.InvalidObjectStateException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.model.Announcement;
 import org.envirocar.app.storage.DbAdapterImpl;
 import org.envirocar.app.util.Util;
@@ -138,7 +139,7 @@ public class MainActivity<AndroidAlarmService> extends SherlockFragmentActivity 
 	public static final int REQUEST_MY_GARAGE = 1336;
 	public static final int REQUEST_REDIRECT_TO_GARAGE = 1337;
 	
-	private static final Logger logger = Logger.getLogger(MainActivity.class);
+	private static final Logger logger = LoggerFactory.getLogger(MainActivity.class);
 	private static final String TRACK_MODE = "trackMode";
 	private static final String SEEN_ANNOUNCEMENTS = "seenAnnouncements";
 	

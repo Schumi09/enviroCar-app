@@ -25,7 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.envirocar.app.activity.preference.CarSelectionPreference;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,7 +43,7 @@ public class Car extends org.envirocar.obdig.model.Car implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -1158542873383742748L;
-	private static final Logger logger = Logger.getLogger(Car.class);
+	private static final Logger logger = LoggerFactory.getLogger(Car.class);
 
 	public static final String TEMPORARY_SENSOR_ID = "%TMP_ID%";
 	
@@ -105,7 +106,7 @@ public class Car extends org.envirocar.obdig.model.Car implements Serializable {
 				try {
 					sensors.add(Car.fromJsonWithStrictEngineDisplacement(properties));
 				} catch (JSONException e) {
-					logger.verbose(String.format("Car '%s' not supported: %s", carId != null ? carId : "null", e.getMessage()));
+					logger.trace(String.format("Car '%s' not supported: %s", carId != null ? carId : "null", e.getMessage()));
 				}
 			}	
 		}

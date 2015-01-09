@@ -23,12 +23,14 @@ package org.envirocar.app.logging;
 import org.acra.collector.CrashReportData;
 import org.acra.sender.ReportSender;
 import org.acra.sender.ReportSenderException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import android.util.Log;
 
 public class ACRACustomSender implements ReportSender {
 
-	private static final Logger logger = Logger.getLogger(ACRACustomSender.class);
+	private static final Logger logger = LoggerFactory.getLogger(ACRACustomSender.class);
 	
     public ACRACustomSender(){
     }
@@ -36,8 +38,8 @@ public class ACRACustomSender implements ReportSender {
     @Override
     public void send(CrashReportData report) throws ReportSenderException {
     	Log.e("acra", "Receiving an app crash: "+ report.toString());
-    	logger.severe(report.toString());
-    	logger.severe("[END OF ACRA REPORT]");
+    	logger.error(report.toString());
+    	logger.error("[END OF ACRA REPORT]");
     }
     
 }

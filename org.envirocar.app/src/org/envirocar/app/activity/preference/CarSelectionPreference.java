@@ -39,7 +39,8 @@ import org.envirocar.app.dao.DAOProvider;
 import org.envirocar.app.dao.exception.NotConnectedException;
 import org.envirocar.app.dao.exception.SensorRetrievalException;
 import org.envirocar.app.dao.exception.UnauthorizedException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.model.Car;
 import org.envirocar.obdig.model.Car.FuelType;
 
@@ -79,7 +80,7 @@ import android.widget.Toast;
 public class CarSelectionPreference extends DialogPreference {
 
 	public static final String SENSOR_TYPE = "car";
-	private static final Logger logger = Logger.getLogger(CarSelectionPreference.class);
+	private static final Logger logger = LoggerFactory.getLogger(CarSelectionPreference.class);
 	private static final String DEFAULT_VALUE = "null";
 	private Car car;
 	private EditText modelEditText;

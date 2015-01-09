@@ -51,7 +51,8 @@ import org.apache.http.HttpResponse;
 import org.envirocar.app.exception.ServerException;
 import org.envirocar.app.json.StreamTrackEncoder;
 import org.envirocar.app.json.TrackWithoutMeasurementsException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.storage.Measurement;
 import org.envirocar.app.storage.Track;
 import org.gavaghan.geodesy.Ellipsoid;
@@ -71,7 +72,7 @@ import android.os.Environment;
 
 public class Util {
 
-	private static final Logger logger = Logger.getLogger(Util.class);
+	private static final Logger logger = LoggerFactory.getLogger(Util.class);
 	public static final String NEW_LINE_CHAR = System
 			.getProperty("line.separator");
 	public static final String EXTERNAL_SUB_FOLDER = "enviroCar";

@@ -38,14 +38,15 @@ import org.envirocar.app.dao.exception.NotConnectedException;
 import org.envirocar.app.dao.exception.ResourceConflictException;
 import org.envirocar.app.dao.exception.SensorRetrievalException;
 import org.envirocar.app.dao.exception.UnauthorizedException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.model.Car;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class RemoteSensorDAO extends BaseRemoteDAO implements SensorDAO, AuthenticatedDAO {
 	
-	static final Logger logger = Logger.getLogger(RemoteSensorDAO.class);
+	static final Logger logger = LoggerFactory.getLogger(RemoteSensorDAO.class);
 	private CacheSensorDAO cache;
 
 	public RemoteSensorDAO(CacheSensorDAO cacheSensorDAO) {

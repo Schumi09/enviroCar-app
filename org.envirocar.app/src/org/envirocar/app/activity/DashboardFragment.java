@@ -39,11 +39,12 @@ import org.envirocar.app.event.LocationEvent;
 import org.envirocar.app.event.LocationEventListener;
 import org.envirocar.app.event.SpeedEvent;
 import org.envirocar.app.event.SpeedEventListener;
-import org.envirocar.app.logging.Logger;
 import org.envirocar.app.model.Car;
 import org.envirocar.obdig.model.Car.FuelType;
 import org.envirocar.app.views.LayeredImageRotateView;
 import org.envirocar.app.views.TypefaceEC;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -77,7 +78,7 @@ import de.keyboardsurfer.android.widget.crouton.Crouton;
  */
 public class DashboardFragment extends SherlockFragment {
 
-	private static final Logger logger = Logger.getLogger(DashboardFragment.class);
+	private static final Logger logger = LoggerFactory.getLogger(DashboardFragment.class);
 	public static final int SENSOR_CHANGED_RESULT = 1337;
 //	private static final String SERVICE_STATE = "serviceState";
 	private static final String LOCATION = "location";

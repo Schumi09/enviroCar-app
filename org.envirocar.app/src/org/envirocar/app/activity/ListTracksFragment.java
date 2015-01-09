@@ -57,7 +57,8 @@ import org.envirocar.obdig.exception.FuelConsumptionException;
 import org.envirocar.obdig.exception.MeasurementsException;
 import org.envirocar.app.exception.ServerException;
 import org.envirocar.app.json.TrackWithoutMeasurementsException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.model.Car;
 import org.envirocar.app.model.TermsOfUseInstance;
 import org.envirocar.app.model.User;
@@ -129,7 +130,7 @@ public class ListTracksFragment extends SherlockFragment {
 	
 	private AtomicInteger remoteTrackCount = new AtomicInteger(-1);
 	
-	protected static final Logger logger = Logger.getLogger(ListTracksFragment.class);
+	protected static final Logger logger = LoggerFactory.getLogger(ListTracksFragment.class);
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

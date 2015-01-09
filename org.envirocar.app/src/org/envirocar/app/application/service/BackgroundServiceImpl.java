@@ -41,7 +41,8 @@ import org.envirocar.app.event.EventBus;
 import org.envirocar.app.event.GpsSatelliteFix;
 import org.envirocar.app.event.GpsSatelliteFixEvent;
 import org.envirocar.app.event.GpsSatelliteFixEventListener;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.obdig.FeatureFlags;
 import org.envirocar.obdig.protocol.ConnectionListener;
 import org.envirocar.obdig.protocol.DataListener;
@@ -77,7 +78,7 @@ import static org.envirocar.app.application.service.AbstractBackgroundServiceSta
 public class BackgroundServiceImpl extends Service implements BackgroundService {
 
 
-	private static final Logger logger = Logger.getLogger(BackgroundServiceImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(BackgroundServiceImpl.class);
 	
 	public static final String CONNECTION_PERMANENTLY_FAILED_INTENT =
 			BackgroundServiceImpl.class.getName()+".CONNECTION_PERMANENTLY_FAILED";

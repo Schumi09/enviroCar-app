@@ -29,7 +29,8 @@ import java.util.List;
 
 import org.envirocar.obdig.exception.FuelConsumptionException;
 import org.envirocar.obdig.exception.MeasurementsException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.model.Car;
 import org.envirocar.obdig.model.Car.FuelType;
 import org.envirocar.app.model.TrackId;
@@ -67,7 +68,7 @@ public class Track implements Comparable<Track> {
 		
 	}
 	
-	private static final Logger logger = Logger.getLogger(Track.class);
+	private static final Logger logger = LoggerFactory.getLogger(Track.class);
 
 	private static final LazyLoadingStrategy lazyLoadingStrategy = new LazyLoadingStrategyImpl();
 

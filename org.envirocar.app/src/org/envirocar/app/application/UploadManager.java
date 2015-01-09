@@ -32,7 +32,8 @@ import org.envirocar.app.dao.exception.DAOException;
 import org.envirocar.app.dao.exception.NotConnectedException;
 import org.envirocar.app.dao.exception.UnauthorizedException;
 import org.envirocar.app.json.TrackWithoutMeasurementsException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.model.Car;
 import org.envirocar.app.storage.DbAdapter;
 import org.envirocar.app.storage.DbAdapterImpl;
@@ -58,7 +59,7 @@ public class UploadManager {
 	public static final String NET_ERROR = "net_error";
 	public static final String GENERAL_ERROR = "-1";
 	
-	private static Logger logger = Logger.getLogger(UploadManager.class);
+	private static Logger logger = LoggerFactory.getLogger(UploadManager.class);
 	private DbAdapter dbAdapter;
 	private Context context;
 	private static Map<String, String> temporaryAlreadyRegisteredCars = new HashMap<String, String>();

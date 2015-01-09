@@ -34,7 +34,8 @@ import java.util.zip.GZIPOutputStream;
 
 import org.envirocar.app.application.TemporaryFileManager;
 import org.envirocar.app.exception.InvalidObjectStateException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.storage.Measurement;
 import org.envirocar.app.storage.Track;
 import org.envirocar.obdig.storage.Measurement.PropertyKey;
@@ -53,7 +54,7 @@ import com.google.gson.stream.JsonWriter;
 
 public class StreamTrackEncoder extends TrackEncoder {
 
-	private static final Logger logger = Logger.getLogger(StreamTrackEncoder.class);
+	private static final Logger logger = LoggerFactory.getLogger(StreamTrackEncoder.class);
 	
 	public FileWithMetadata createTrackJsonAsFile(Track track, boolean obfuscate, File result) throws FileNotFoundException, IOException, TrackWithoutMeasurementsException, JSONException {
 		return createTrackJsonAsFile(track, obfuscate, result, false);

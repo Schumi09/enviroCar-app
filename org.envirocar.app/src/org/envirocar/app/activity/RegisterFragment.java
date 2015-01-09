@@ -27,7 +27,8 @@ import org.envirocar.app.application.UserManager;
 import org.envirocar.app.dao.DAOProvider;
 import org.envirocar.app.dao.exception.ResourceConflictException;
 import org.envirocar.app.dao.exception.UserUpdateException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.model.User;
 import org.envirocar.app.views.TypefaceEC;
 
@@ -60,7 +61,7 @@ import de.keyboardsurfer.android.widget.crouton.Style;
  */
 public class RegisterFragment extends SherlockFragment {
 	
-	private static final Logger logger = Logger.getLogger(RegisterFragment.class);
+	private static final Logger logger = LoggerFactory.getLogger(RegisterFragment.class);
 
 
 	/**

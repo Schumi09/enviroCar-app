@@ -28,14 +28,15 @@ import org.envirocar.app.dao.cache.CacheAnnouncementsDAO;
 import org.envirocar.app.dao.exception.AnnouncementsRetrievalException;
 import org.envirocar.app.dao.exception.NotConnectedException;
 import org.envirocar.app.dao.exception.UnauthorizedException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.model.Announcement;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class RemoteAnnouncementsDAO extends BaseRemoteDAO implements AnnouncementsDAO {
 
-	private static final Logger logger = Logger.getLogger(RemoteAnnouncementsDAO.class);
+	private static final Logger logger = LoggerFactory.getLogger(RemoteAnnouncementsDAO.class);
 	private CacheAnnouncementsDAO cache;
 
 	public RemoteAnnouncementsDAO(CacheAnnouncementsDAO cacheAnnouncementsDAO) {

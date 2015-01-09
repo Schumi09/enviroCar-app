@@ -27,7 +27,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.envirocar.obdig.exception.MeasurementsException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.storage.Measurement;
 import org.envirocar.app.storage.Track;
 import org.envirocar.obdig.storage.Measurement.PropertyKey;
@@ -40,7 +41,7 @@ import org.json.JSONObject;
 
 public class TrackEncoder {
 	
-	private static final Logger logger = Logger.getLogger(TrackEncoder.class);
+	private static final Logger logger = LoggerFactory.getLogger(TrackEncoder.class);
 
 	public static final Set<PropertyKey> supportedPhenomenons = new HashSet<PropertyKey>();
 

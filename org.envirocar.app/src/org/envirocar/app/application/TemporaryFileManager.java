@@ -26,14 +26,15 @@ import java.util.List;
 import java.util.UUID;
 
 import org.envirocar.app.exception.InvalidObjectStateException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.util.Util;
 
 import android.content.Context;
 
 public class TemporaryFileManager {
 
-	private static final Logger logger = Logger.getLogger(TemporaryFileManager.class);
+	private static final Logger logger = LoggerFactory.getLogger(TemporaryFileManager.class);
 	
 	private static TemporaryFileManager instance;
 	private Context context;

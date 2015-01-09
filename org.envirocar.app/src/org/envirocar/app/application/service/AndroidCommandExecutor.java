@@ -3,7 +3,8 @@ package org.envirocar.app.application.service;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.obdig.protocol.CommandExecutor;
 import org.envirocar.obdig.protocol.OBDCommandLooper;
 import org.envirocar.obdig.protocol.exception.LooperStoppedException;
@@ -14,7 +15,7 @@ import android.os.Looper;
 
 public class AndroidCommandExecutor extends HandlerThread implements CommandExecutor {
 	
-	private static final Logger logger = Logger.getLogger(AndroidCommandExecutor.class);
+	private static final Logger logger = LoggerFactory.getLogger(AndroidCommandExecutor.class);
 	private Handler handler;
 	private Set<Runnable> allKnownRunnables = new HashSet<Runnable>();
 	private OBDCommandLooper commandLooper;

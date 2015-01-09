@@ -27,7 +27,8 @@ import org.envirocar.app.dao.cache.CacheTermsOfUseDAO;
 import org.envirocar.app.dao.exception.NotConnectedException;
 import org.envirocar.app.dao.exception.TermsOfUseRetrievalException;
 import org.envirocar.app.dao.exception.UnauthorizedException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.model.TermsOfUse;
 import org.envirocar.app.model.TermsOfUseInstance;
 import org.json.JSONException;
@@ -35,7 +36,7 @@ import org.json.JSONObject;
 
 public class RemoteTermsOfUseDAO extends BaseRemoteDAO implements TermsOfUseDAO {
 
-	private static final Logger logger = Logger.getLogger(RemoteTermsOfUseDAO.class);
+	private static final Logger logger = LoggerFactory.getLogger(RemoteTermsOfUseDAO.class);
 	private CacheTermsOfUseDAO cache;
 
 	public RemoteTermsOfUseDAO(CacheTermsOfUseDAO cacheTermsOfUseDAO) {

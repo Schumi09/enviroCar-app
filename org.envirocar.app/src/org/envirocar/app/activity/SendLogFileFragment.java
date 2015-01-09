@@ -26,13 +26,15 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Properties;
 
 import org.envirocar.app.R;
-import org.envirocar.app.logging.LocalFileHandler;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.util.Util;
 
 import android.content.Intent;
@@ -45,6 +47,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.noveogroup.android.log.LoggerManager;
+import com.noveogroup.android.log.Utils;
 
 /**
  * An activity for reporting issues.
@@ -54,11 +58,10 @@ import com.actionbarsherlock.app.SherlockFragment;
  */
 public class SendLogFileFragment extends SherlockFragment {
 
-	private static final Logger logger = Logger
+	private static final Logger logger = LoggerFactory
 			.getLogger(SendLogFileFragment.class);
 	private static final String REPORTING_EMAIL = "envirocar@52north.org";
 	private static final DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss", Locale.getDefault());
-	private static final DateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 	private static final String PREFIX = "report-";
 	private static final String EXTENSION = ".zip";
 	private EditText whenField;
@@ -94,8 +97,8 @@ public class SendLogFileFragment extends SherlockFragment {
 		}
 		else {
 			locationText.setError("Error allocating report bundle.");
-			locationText.setText("An error occured while creating the report bundle. Please send in the logs available at "+
-					LocalFileHandler.effectiveFile.getParentFile().getAbsolutePath());
+//			locationText.setText("An error occured while creating the report bundle. Please send in the logs available at "+
+//					LocalFileHandler.effectiveFile.getParentFile().getAbsolutePath());
 		}
 		
 		resolveInputFields(view);
@@ -186,17 +189,20 @@ public class SendLogFileFragment extends SherlockFragment {
 	}
 
 	private void removeOldReportBundles() throws IOException {
-		File baseFolder = Util.resolveExternalStorageBaseFolder();
+		File logFile = resolveBaseLogFile();
+		File baseFolder = logFile.getParentFile();
 		
-		final String todayPrefix = PREFIX.concat(dayFormat.format(new Date()));
+		final long timestamp = new Date().getTime(); 
 		File[] oldFiles = baseFolder.listFiles(new FileFilter() {
 			@Override
 			public boolean accept(File pathname) {
 				if (pathname.isDirectory()) return false;
 				
-				return pathname.getName().startsWith(PREFIX) &&
-						!pathname.getName().startsWith(todayPrefix) &&
-						pathname.getName().endsWith(EXTENSION);
+				if (pathname.lastModified() < timestamp - (1000*60*60*24)) {
+					return true;
+				}
+
+				return false;
 			}
 		});
 		
@@ -206,18 +212,40 @@ public class SendLogFileFragment extends SherlockFragment {
 	}
 	
 	private List<File> findAllLogFiles() {
-		File logFile = LocalFileHandler.effectiveFile;
-		final String shortName = logFile.getName();
+		File logFile = resolveBaseLogFile();
+		
+		if (logFile == null) {
+			return Collections.emptyList();
+		}
+		
+		String shortName = logFile.getName();
+		int index = shortName.lastIndexOf('.');
+		final String ext = shortName.substring(index == -1 ? 0:index, shortName.length());
 
 		File[] allFiles = logFile.getParentFile().listFiles(new FileFilter() {
 			@Override
 			public boolean accept(File pathname) {
-				return pathname.getName().startsWith(shortName)
+				return pathname.getName().endsWith(ext)
 						&& !pathname.getName().endsWith("lck");
 			}
 		});
 
 		return Arrays.asList(allFiles);
+	}
+
+
+	private File resolveBaseLogFile() {
+		Properties props = new Properties();
+		File logFile;
+		try {
+			props.load(getClass().getResourceAsStream("/android-logger.properties"));
+			String f = props.getProperty(LoggerManager.LOCAL_FILE_LOCATION);
+			logFile = Utils.createFileOnExternalStorage(f);
+		} catch (IOException e) {
+			logger.warn("Could not resolve log file directory.", e);
+			return null;
+		}
+		return logFile;
 	}
 
 }

@@ -21,7 +21,8 @@
 
 package org.envirocar.app.views;
 
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
@@ -34,7 +35,7 @@ import android.os.Build;
  */
 public class Utils {
 	
-	private static final Logger logger = Logger.getLogger(Utils.class);
+	private static final Logger logger = LoggerFactory.getLogger(Utils.class);
 
 
 	public static int getActionBarId() {

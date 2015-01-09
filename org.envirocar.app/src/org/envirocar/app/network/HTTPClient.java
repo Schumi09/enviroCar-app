@@ -37,7 +37,8 @@ import org.apache.http.entity.AbstractHttpEntity;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import android.net.http.AndroidHttpClient;
 
@@ -49,7 +50,7 @@ import android.net.http.AndroidHttpClient;
  */
 public class HTTPClient {
 
-	private static final Logger logger = Logger.getLogger(HTTPClient.class);
+	private static final Logger logger = LoggerFactory.getLogger(HTTPClient.class);
 	public static final int MIN_GZIP_SIZE = 8192;
 	private static AndroidHttpClient client;
 	

@@ -30,7 +30,8 @@ import java.util.Map;
 
 import org.envirocar.app.R;
 import org.envirocar.app.application.CarManager;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.model.Car;
 import org.envirocar.obdig.model.Car.FuelType;
 import org.envirocar.app.model.Position;
@@ -50,7 +51,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DbAdapterImpl implements DbAdapter {
 	
-	private static final Logger logger = Logger.getLogger(DbAdapterImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(DbAdapterImpl.class);
 	
 	public static final String TABLE_MEASUREMENT = "measurements";
 	public static final String KEY_MEASUREMENT_TIME = "time";
@@ -243,7 +244,7 @@ public class DbAdapterImpl implements DbAdapter {
 			}
 		}
 		
-		logger.verbose("Inserting measurements: "+ measurement);
+		logger.trace("Inserting measurements: "+ measurement);
 		
 		ContentValues values = new ContentValues();
 		
@@ -468,7 +469,7 @@ public class DbAdapterImpl implements DbAdapter {
 					}
 				}
 			} catch (JSONException e) {
-				logger.severe("could not load properties", e);
+				logger.error("could not load properties", e);
 			}
 		}
 		return measurement;

@@ -28,7 +28,8 @@ import org.envirocar.app.application.NavMenuItem;
 import org.envirocar.app.application.service.AbstractBackgroundServiceStateReceiver.ServiceState;
 import org.envirocar.app.application.service.BackgroundServiceImpl;
 import org.envirocar.app.application.service.DeviceInRangeService;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -48,7 +49,7 @@ import de.keyboardsurfer.android.widget.crouton.Style;
  */
 public class StartStopButtonUtil {
 
-	private static final Logger logger = Logger.getLogger(StartStopButtonUtil.class);
+	private static final Logger logger = LoggerFactory.getLogger(StartStopButtonUtil.class);
 	
 	private ECApplication application;
 	private int trackMode;

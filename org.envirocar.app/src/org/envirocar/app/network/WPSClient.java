@@ -25,7 +25,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 import org.envirocar.obdig.exception.MeasurementsException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.storage.Track;
 import org.envirocar.app.util.Util;
 
@@ -33,7 +34,7 @@ import android.os.AsyncTask;
 
 public class WPSClient {
 
-	private static final Logger logger = Logger.getLogger(WPSClient.class);
+	private static final Logger logger = LoggerFactory.getLogger(WPSClient.class);
 
 	/**
 	 * Make a WPS request for calculating the fuel costs of a track.

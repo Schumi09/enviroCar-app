@@ -27,14 +27,15 @@ import org.envirocar.app.dao.CacheDirectoryProvider;
 import org.envirocar.app.dao.SensorDAO;
 import org.envirocar.app.dao.exception.NotConnectedException;
 import org.envirocar.app.dao.exception.SensorRetrievalException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.model.Car;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class CacheSensorDAO extends AbstractCacheDAO implements SensorDAO {
 	
-	private static final Logger logger = Logger.getLogger(CacheSensorDAO.class);
+	private static final Logger logger = LoggerFactory.getLogger(CacheSensorDAO.class);
 	public static final String CAR_CACHE_FILE_NAME = "cache_cars";
 	
 	public CacheSensorDAO(CacheDirectoryProvider cacheDirectoryProvider) {

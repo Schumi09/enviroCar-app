@@ -25,7 +25,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * the central event dissemination component. Classes interested
@@ -38,7 +39,7 @@ import org.envirocar.app.logging.Logger;
  */
 public class EventBus {
 
-	protected static final Logger logger = Logger.getLogger(EventBus.class);
+	protected static final Logger logger = LoggerFactory.getLogger(EventBus.class);
 	private static EventBus instance;
 	private Map<Class<?>, List<EventListener<?>>> listeners = new HashMap<Class<?>, List<EventListener<?>>>();
 	

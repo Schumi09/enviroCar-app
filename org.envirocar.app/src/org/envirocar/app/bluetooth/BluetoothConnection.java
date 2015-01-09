@@ -31,7 +31,8 @@ import java.util.UUID;
 import org.envirocar.app.activity.TroubleshootingFragment;
 import org.envirocar.app.application.service.BackgroundService;
 import org.envirocar.app.bluetooth.FallbackBluetoothSocket.FallbackException;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
@@ -46,7 +47,7 @@ import android.os.Parcelable;
 @SuppressLint("NewApi")
 public class BluetoothConnection extends Thread {
 
-	private static final Logger logger = Logger.getLogger(BluetoothConnection.class);
+	private static final Logger logger = LoggerFactory.getLogger(BluetoothConnection.class);
 	private static final UUID EMBEDDED_BOARD_SPP = UUID
 			.fromString("00001101-0000-1000-8000-00805F9B34FB");
 	

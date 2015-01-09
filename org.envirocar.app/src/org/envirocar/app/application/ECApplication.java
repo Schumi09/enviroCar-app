@@ -34,15 +34,17 @@ import org.envirocar.app.activity.SettingsActivity;
 import org.envirocar.app.dao.CacheDirectoryProvider;
 import org.envirocar.app.dao.DAOProvider;
 import org.envirocar.app.logging.ACRACustomSender;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.storage.DbAdapterImpl;
 import org.envirocar.app.storage.Track;
 import org.envirocar.app.util.NamedThreadFactory;
 import org.envirocar.app.util.Util;
 
+import com.noveogroup.android.log.LoggerManager;
+
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application;
@@ -66,7 +68,7 @@ import android.support.v4.app.NotificationCompat;
 @ReportsCrashes(formKey = "")
 public class ECApplication extends Application {
 	
-	private static final Logger logger = Logger.getLogger(ECApplication.class);
+	private static final Logger logger = LoggerFactory.getLogger(ECApplication.class);
 	
 	// Strings
 	
@@ -95,7 +97,7 @@ public class ECApplication extends Application {
 		public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
 				String key) {
 			if (SettingsActivity.ENABLE_DEBUG_LOGGING.equals(key)) {
-				Logger.initialize(Util.getVersionString(ECApplication.this),
+				initializeLogging(Util.getVersionString(ECApplication.this),
 						sharedPreferences.getBoolean(SettingsActivity.ENABLE_DEBUG_LOGGING, false));
 			}
 		}
@@ -136,7 +138,7 @@ public class ECApplication extends Application {
 		preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 		preferences.registerOnSharedPreferenceChangeListener(preferenceListener);
 		
-		Logger.initialize(Util.getVersionString(this),
+		initializeLogging(Util.getVersionString(this),
 				preferences.getBoolean(SettingsActivity.ENABLE_DEBUG_LOGGING, false));
 		
 		try {
@@ -166,6 +168,32 @@ public class ECApplication extends Application {
 		
 	}
 	
+	private void initializeLogging(String versionString, boolean globalDebug) {
+		if (globalDebug) {
+			LoggerManager.enableGlobalDebugLevel();
+		}
+		else {
+			LoggerManager.disableGlobalDebugLevel();
+		}
+
+		StringBuilder sb = new StringBuilder();
+		sb.append("System information:");
+		sb.append(Util.NEW_LINE_CHAR);
+		sb.append(System.getProperty("os.version"));
+		sb.append(", ");
+		sb.append(android.os.Build.VERSION.SDK_INT);
+		sb.append(", ");
+		sb.append(android.os.Build.DEVICE);
+		sb.append(", ");
+		sb.append(android.os.Build.MODEL);
+		sb.append(", ");
+		sb.append(android.os.Build.PRODUCT);
+		sb.append("; App version: ");
+		sb.append(versionString);
+		logger.info(sb.toString());
+	}
+
+
 	@Override
 	public void onLowMemory() {
 		super.onLowMemory();

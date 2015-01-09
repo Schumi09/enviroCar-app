@@ -24,7 +24,8 @@ import org.envirocar.app.event.EventBus;
 import org.envirocar.app.event.GpsDOPEvent;
 import org.envirocar.app.event.GpsSatelliteFixEvent;
 import org.envirocar.app.event.LocationEvent;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import android.location.GpsStatus.NmeaListener;
 import android.location.Location;
@@ -34,7 +35,7 @@ import android.os.Bundle;
 
 public class LocationUpdateListener implements LocationListener, NmeaListener {
 
-	private static final Logger logger = Logger.getLogger(LocationUpdateListener.class);
+	private static final Logger logger = LoggerFactory.getLogger(LocationUpdateListener.class);
 	private static final String GPGSA = "$GPGSA";
 	private static final String NMEA_SEP = ",";
 	private LocationManager lm;

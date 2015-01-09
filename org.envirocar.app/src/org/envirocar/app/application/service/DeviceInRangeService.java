@@ -25,7 +25,8 @@ import org.envirocar.app.R;
 import org.envirocar.app.activity.MainActivity;
 import org.envirocar.app.activity.SettingsActivity;
 import org.envirocar.app.application.service.AbstractBackgroundServiceStateReceiver.ServiceState;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -55,7 +56,7 @@ import android.support.v4.app.NotificationCompat;
  */
 public class DeviceInRangeService extends Service {
 	
-	private static final Logger logger = Logger.getLogger(DeviceInRangeService.class);
+	private static final Logger logger = LoggerFactory.getLogger(DeviceInRangeService.class);
 
 	private static final long DISCOVERY_PERIOD = 1000 * 60 * 2;
 

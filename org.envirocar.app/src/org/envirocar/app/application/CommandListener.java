@@ -49,7 +49,8 @@ import org.envirocar.app.event.IntakePressureEvent;
 import org.envirocar.app.event.IntakeTemperatureEvent;
 import org.envirocar.app.event.RPMEvent;
 import org.envirocar.app.event.SpeedEvent;
-import org.envirocar.app.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.envirocar.app.model.Car;
 import org.envirocar.app.storage.DbAdapter;
 import org.envirocar.app.storage.DbAdapterImpl;
@@ -70,7 +71,7 @@ import android.content.SharedPreferences;
  */
 public class CommandListener implements DataListener, MeasurementListener {
 	
-	private static final Logger logger = Logger.getLogger(CommandListener.class);
+	private static final Logger logger = LoggerFactory.getLogger(CommandListener.class);
 
 	private Collector collector;
 
