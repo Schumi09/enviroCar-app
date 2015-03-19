@@ -20,12 +20,7 @@
  */
 package org.envirocar.app.application;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import android.content.SharedPreferences;
 
 import org.envirocar.app.activity.SettingsActivity;
 import org.envirocar.app.commands.CommonCommand;
@@ -58,7 +53,12 @@ import org.envirocar.app.storage.MeasurementSerializationException;
 import org.envirocar.app.storage.TrackAlreadyFinishedException;
 import org.envirocar.app.storage.TrackMetadata;
 
-import android.content.SharedPreferences;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Standalone listener class for OBDII commands. It provides all
@@ -78,6 +78,8 @@ public class CommandListener implements Listener, MeasurementListener {
 	private TrackMetadata obdDeviceMetadata;
 
 	private boolean shutdownCompleted = false;
+
+    public static Measurement currentMeasurement = new Measurement(0,0);
 
 	private static int instanceCount;
 	private ExecutorService inserter = new ThreadPoolExecutor(1, 1, 0L, 
@@ -247,6 +249,8 @@ public class CommandListener implements Listener, MeasurementListener {
 			this.collector.newLongTermTrimBank1(((LongTermTrimBank1) command).getNumberResult());
 //			logger.info("Processed LongTermTrimBank1: "+ command.toString());
 		}
+
+    currentMeasurement = this.collector.getMeasurement();
 	}
 	
 
@@ -310,5 +314,8 @@ public class CommandListener implements Listener, MeasurementListener {
 		db.setConnectedOBDDevice(obdDeviceMetadata);
 	}
 
+    public static Measurement getCurrentMeasurement(){
+        return currentMeasurement;
+    }
 	
 }

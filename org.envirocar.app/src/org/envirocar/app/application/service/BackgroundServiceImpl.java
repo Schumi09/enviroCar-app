@@ -109,6 +109,8 @@ public class BackgroundServiceImpl extends Service implements BackgroundService 
 
 	protected GpsSatelliteFix fix = new GpsSatelliteFix(0, false);
 
+    protected Intent emergencyBrakeService;
+
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -209,8 +211,8 @@ public class BackgroundServiceImpl extends Service implements BackgroundService 
 		};
 		
 		EventBus.getInstance().registerListener(gpsListener);
-		
 		startConnection();
+
 	}
 
 	/**
@@ -230,6 +232,7 @@ public class BackgroundServiceImpl extends Service implements BackgroundService 
 				EventBus.getInstance().unregisterListener(gpsListener);
 				
 				locationListener.stopLocating();
+                stopService(emergencyBrakeService);
 				
 				if (BackgroundServiceImpl.this.commandListener != null) {
 					BackgroundServiceImpl.this.commandListener.shutdown();
@@ -296,6 +299,10 @@ public class BackgroundServiceImpl extends Service implements BackgroundService 
 		BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(remoteDevice);
 
 		bluetoothConnection = new BluetoothConnection(bluetoothDevice, true, this, getApplicationContext());
+        
+        //Starting the EmergencyBrakeService after setting up Bluetooth Connection
+        emergencyBrakeService = new Intent (this, EmergencyBrakeService.class);
+        startService(EmergencyBrakeService);
 	}
 	
 	

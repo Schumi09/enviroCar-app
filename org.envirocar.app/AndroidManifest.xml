@@ -85,6 +85,9 @@
         <service android:name="org.envirocar.app.application.service.DeviceInRangeService"
             android:exported="false" />
 
+        <service android:name=".application.service.EmergencyBrakeService"
+            android:exported="false" />
+
         <activity
             android:name="org.envirocar.app.activity.Map"
             android:label="@string/title_activity_map"
